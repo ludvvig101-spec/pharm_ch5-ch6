@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RCARE Pharm Study Guide: ANS & Adrenergic Bronchodilators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* neon-on-dark base */
+  --bg:#0b0714; --card:#150c26; --ink:#f4f0ff; --sub:#b3a3d6; --line:rgba(255,255,255,.08); --chip:#1b1030;
+  /* neon sprinkle palette */
+  --mint:#00ffb2; --mint-soft:rgba(0,255,178,.14);
+  --straw:#ff2e92; --straw-soft:rgba(255,46,146,.14);
+  --lav:#b26bff; --lav-soft:rgba(178,107,255,.16);
+  --banana:#f9f002; --banana-soft:rgba(249,240,2,.14);
+  --peach:#ff7a1a; --peach-soft:rgba(255,122,26,.14);
+  --sky:#20e3ff; --sky-soft:rgba(32,227,255,.14);
+  /* semantic (chapter-scoped) */
+  --para:var(--mint); --sym:var(--straw);
+  --warn:#ff2e5b; --good:#00ffb2;
+  /* current-tab accent, switched by JS */
+  --accent:var(--straw); --accent-soft:var(--straw-soft);
+  --font-display:"Baloo 2",ui-rounded,"Nunito",sans-serif;
+  --font-body:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+:root[data-theme="light"]{
+  --bg:#f7f5ff; --card:#ffffff; --ink:#1c1330; --sub:#6b5f8a; --line:#e6def8; --chip:#f1ecfd;
+  --mint-soft:rgba(0,200,150,.12); --straw-soft:rgba(230,20,120,.12); --lav-soft:rgba(140,70,230,.12);
+  --banana-soft:rgba(200,180,0,.14); --peach-soft:rgba(230,110,20,.12); --sky-soft:rgba(0,170,220,.12);
+}
+*{box-sizing:border-box;}
+*:focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px;}
+@media (prefers-reduced-motion:reduce){ *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  margin:0; font-family:var(--font-body);
+  background:var(--bg); color:var(--ink);
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  transition:background .3s;
+}
+header{
+  position:relative; z-index:20; overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 25%, var(--straw) 0 3px, rgba(255,46,146,.35) 3px 12px, transparent 16px),
+    radial-gradient(circle at 20% 70%, var(--mint) 0 3px, rgba(0,255,178,.35) 3px 12px, transparent 16px),
+    radial-gradient(circle at 33% 18%, var(--banana) 0 3px, rgba(249,240,2,.3) 3px 11px, transparent 15px),
+    radial-gradient(circle at 47% 58%, var(--lav) 0 3px, rgba(178,107,255,.35) 3px 12px, transparent 16px),
+    radial-gradient(circle at 60% 22%, var(--sky) 0 3px, rgba(32,227,255,.35) 3px 12px, transparent 16px),
+    radial-gradient(circle at 72% 68%, var(--straw) 0 3px, rgba(255,46,146,.3) 3px 11px, transparent 15px),
+    radial-gradient(circle at 84% 28%, var(--mint) 0 3px, rgba(0,255,178,.3) 3px 11px, transparent 15px),
+    radial-gradient(circle at 93% 62%, var(--banana) 0 3px, rgba(249,240,2,.3) 3px 11px, transparent 15px),
+    linear-gradient(160deg, #0b0714, #170a2c 55%, #0b0714);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  box-shadow:0 6px 30px -6px rgba(0,0,0,.6);
+  padding:calc(16px + env(safe-area-inset-top,0px)) 16px 14px;
+}
+h1{
+  font-family:var(--font-display); font-weight:700; font-size:19px; margin:0 0 6px; line-height:1.3;
+  color:#fff; text-shadow:0 0 6px var(--accent), 0 0 22px var(--accent);
+  transition:text-shadow .3s;
+}
+#headline-sub{font-family:var(--font-body); font-size:13px; color:var(--sub); margin:0 0 12px; max-width:520px; line-height:1.4;}
+body[data-tab="ch5"]{--accent:var(--mint); --accent-soft:var(--mint-soft);}
+body[data-tab="ch6"]{--accent:var(--straw); --accent-soft:var(--straw-soft);}
+body[data-tab="mnem"]{--accent:var(--lav); --accent-soft:var(--lav-soft);}
+body[data-tab="flash"]{--accent:var(--banana); --accent-soft:var(--banana-soft);}
+body[data-tab="quiz"]{--accent:var(--peach); --accent-soft:var(--peach-soft);}
+nav{display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px;}
+nav button{
+  flex:0 0 auto; border:1.5px solid var(--line); background:rgba(255,255,255,.03); color:var(--sub);
+  padding:9px 15px; border-radius:999px; font-family:var(--font-display); font-size:13px; font-weight:600;
+  cursor:pointer; white-space:nowrap; transition:all .2s;
+}
+nav button:hover{border-color:var(--accent); color:var(--accent);}
+nav button.active{
+  background:rgba(255,255,255,.05); border-color:var(--accent); color:var(--accent);
+  text-shadow:0 0 8px var(--accent); box-shadow:0 0 16px -2px var(--accent), inset 0 0 12px -8px var(--accent);
+}
+main{max-width:820px; margin:0 auto; padding:20px 14px 60px;}
+.view{display:none;}
+.view.active{display:block;}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:20px; padding:16px 18px; margin-bottom:14px;
+  box-shadow:0 4px 20px -10px rgba(0,0,0,.5); transition:box-shadow .25s, border-color .25s;
+}
+.card.open{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent), 0 0 28px -6px var(--accent);}
+.acc-head{display:flex; align-items:center; justify-content:space-between; cursor:pointer; gap:10px;}
+.acc-head h3{margin:0; font-family:var(--font-display); font-weight:600; font-size:15.5px; line-height:1.4; color:var(--ink);}
+.acc-head .arrow{transition:transform .25s, text-shadow .25s; color:var(--accent); flex:0 0 auto; font-size:15px; text-shadow:0 0 6px var(--accent);}
+.acc-body{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+.card.open .acc-body{max-height:4000px;}
+.card.open .arrow{transform:rotate(90deg);}
+ul.points{margin:10px 0 0; padding-left:20px;}
+ul.points li{margin:6px 0; font-size:14.5px; line-height:1.55;}
+ul.points ul{margin-top:4px;}
+.tag{
+  display:inline-block; font-size:11px; font-weight:700; letter-spacing:.3px;
+  padding:3px 10px; border-radius:999px; margin-right:6px; border:1px solid currentColor;
+}
+.tag.para{background:var(--mint-soft); color:var(--mint); text-shadow:0 0 6px var(--mint);}
+.tag.sym{background:var(--straw-soft); color:var(--straw); text-shadow:0 0 6px var(--straw);}
+.mnemonic{
+  margin-top:12px; background:var(--lav-soft); border:1px solid var(--lav); border-radius:14px;
+  padding:10px 14px; font-size:13.5px; position:relative; box-shadow:0 0 18px -8px var(--lav);
+}
+.mnemonic::before{content:"✨"; margin-right:6px;}
+.mnemonic b{color:var(--lav); text-shadow:0 0 6px var(--lav);}
+.chsubtitle{color:var(--sub); font-size:13.5px; margin:2px 0 14px; line-height:1.5;}
+/* table-ish compare */
+.cmp{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+.cmp .col{background:var(--chip); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
+.cmp .col h4{margin:0 0 6px; font-family:var(--font-display); font-size:13.5px;}
+.cmp .col ul{margin:0; padding-left:16px; font-size:13px;}
+.cmp .col li{margin:4px 0;}
+/* flashcards */
+.fc-wrap{display:flex; flex-direction:column; align-items:center; gap:16px;}
+.fc-progress{color:var(--sub); font-size:13px; font-weight:600;}
+.flash{
+  width:100%; max-width:560px; min-height:220px; perspective:1200px; cursor:pointer;
+}
+.flash-inner{
+  position:relative; width:100%; height:100%; min-height:220px; transition:transform .5s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d;
+}
+.flash.flipped .flash-inner{transform:rotateY(180deg);}
+.face{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius:22px; border:1.5px solid var(--straw);
+  display:flex; align-items:center; justify-content:center; text-align:center; padding:26px; font-size:16px; line-height:1.55;
+  background:var(--card); box-shadow:0 0 30px -10px var(--straw), 0 10px 30px -12px rgba(0,0,0,.6);
+}
+.face.front{font-weight:700; font-family:var(--font-display);}
+.face.back{transform:rotateY(180deg); border-color:var(--mint); box-shadow:0 0 30px -10px var(--mint), 0 10px 30px -12px rgba(0,0,0,.6);}
+.fc-controls{display:flex; gap:10px; flex-wrap:wrap; justify-content:center;}
+button.btn{
+  border:1.5px solid var(--accent); background:transparent; color:var(--accent); padding:11px 18px; border-radius:999px; font-size:14px;
+  font-family:var(--font-display); font-weight:600; cursor:pointer; box-shadow:0 0 16px -4px var(--accent); transition:all .2s;
+  text-shadow:0 0 6px var(--accent);
+}
+button.btn:hover{background:var(--accent-soft); box-shadow:0 0 24px -2px var(--accent);}
+button.btn.secondary{border-color:var(--line); color:var(--sub); box-shadow:none; text-shadow:none;}
+button.btn.secondary:hover{border-color:var(--accent); color:var(--accent);}
+button.btn.warn{border-color:var(--warn); color:var(--warn); box-shadow:0 0 16px -4px var(--warn); text-shadow:0 0 6px var(--warn);}
+button.btn.good{border-color:var(--good); color:var(--good); box-shadow:0 0 16px -4px var(--good); text-shadow:0 0 6px var(--good);}
+select, .filterbar{font-size:13px;}
+.filterbar{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;}
+.filterbar button{
+  border:1.5px solid var(--line); background:var(--chip); color:var(--sub); padding:7px 14px; border-radius:999px;
+  cursor:pointer; font-size:12.5px; font-weight:700; transition:all .2s;
+}
+.filterbar button.active{border-color:var(--accent); color:var(--accent); text-shadow:0 0 6px var(--accent); box-shadow:0 0 14px -4px var(--accent);}
+/* quiz */
+.qprog{color:var(--sub); font-size:13px; margin-bottom:6px; font-weight:600;}
+.qtext{font-family:var(--font-display); font-size:16.5px; font-weight:600; margin:6px 0 16px; line-height:1.45;}
+.opt{
+  display:block; width:100%; text-align:left; background:var(--chip); border:1.5px solid var(--line); color:var(--ink);
+  padding:13px 16px; border-radius:14px; margin-bottom:9px; font-size:14.5px; cursor:pointer; transition:transform .1s, border-color .15s, box-shadow .15s;
+}
+.opt:hover:not(:disabled){transform:translateX(2px); border-color:var(--accent); box-shadow:0 0 14px -6px var(--accent);}
+.opt.correct{border-color:var(--good); background:var(--mint-soft); color:var(--good); font-weight:700; box-shadow:0 0 20px -6px var(--good); text-shadow:0 0 6px var(--good);}
+.opt.wrong{border-color:var(--warn); background:var(--straw-soft); color:var(--warn); font-weight:700; box-shadow:0 0 20px -6px var(--warn); text-shadow:0 0 6px var(--warn);}
+.opt:disabled{cursor:default;}
+.explain{background:var(--banana-soft); border:1px solid var(--banana); border-radius:14px; padding:11px 14px; font-size:13.5px; margin-top:8px;}
+.scorebox{text-align:center; padding:34px 10px;}
+.scorebox .big{font-family:var(--font-display); font-size:46px; font-weight:800; color:var(--accent); text-shadow:0 0 10px var(--accent), 0 0 30px var(--accent);}
+/* diagrams */
+svg text{font-family:var(--font-body); fill:var(--ink);}
+.dgm{width:100%; height:auto; display:block; margin:12px 0;}
+.legend{display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:var(--sub); margin-top:6px;}
+.dot{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:5px; vertical-align:middle;}
+footer{text-align:center; color:var(--sub); font-size:12px; padding:24px 0 10px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>RCARE-101 Pharm Scoop Shop</h1>
+  <p id="headline-sub">Autonomic nervous system pharmacology &amp; adrenergic bronchodilators — every slide, one sweet review.</p>
+  <nav id="tabs">
+    <button data-v="ch5" data-c="mint" class="active">Ch.5 ANS</button>
+    <button data-v="ch6" data-c="straw">Ch.6 Bronchodilators</button>
+    <button data-v="mnem" data-c="lav">Memory Tricks</button>
+    <button data-v="flash" data-c="banana">Flashcards</button>
+    <button data-v="quiz" data-c="peach">Quiz</button>
+  </nav>
+</header>
+<main>
+
+  <section id="ch5" class="view active">
+    <p class="chsubtitle">Autonomic Nervous System &amp; ANS Pharmacology — every slide from Day_Pharm_005, organized for review. Tap a section to expand.</p>
+    <div id="ch5-list"></div>
+  </section>
+
+  <section id="ch6" class="view">
+    <p class="chsubtitle">Adrenergic (Sympathomimetic) Bronchodilators — every slide from Day_Pharm_006, organized for review.</p>
+    <div id="ch6-list"></div>
+  </section>
+
+  <section id="mnem" class="view">
+    <div class="card open"><div class="acc-head"><h3>🧠 The big-picture memory map</h3></div><div class="acc-body">
+      <ul class="points">
+        <li><b>Two ways to name the same drug effect</b> — anatomy word = pharmacology word:
+          <ul>
+            <li><span class="tag para">PARA</span> Parasympatho<b>mimetic</b> = <b>Cholinergic</b> (turns ON the "rest" system — mimics ACh)</li>
+            <li><span class="tag para">PARA</span> Parasympatho<b>lytic</b> = <b>Anticholinergic</b> (turns OFF the "rest" system — blocks ACh)</li>
+            <li><span class="tag sym">SYM</span> Sympatho<b>mimetic</b> = <b>Adrenergic</b> (turns ON "alarm" system — mimics NE/Epi)</li>
+            <li><span class="tag sym">SYM</span> Sympatho<b>lytic</b> = <b>Antiadrenergic</b> (turns OFF "alarm" system)</li>
+          </ul>
+          <div class="mnemonic"><b>Trick:</b> "-mimetic" always MIMICS/turns ON. "-lytic" always LYSES/blocks/turns OFF — no matter which branch.</div>
+        </li>
+      </ul>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>😌 Rest-and-Digest vs 🏃 Fight-or-Flight</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <div class="cmp">
+        <div class="col"><h4 style="color:var(--para)">Parasympathetic</h4><ul>
+          <li>"Rest-and-Digest"</li><li>↓HR, ↓BP, ↓RR</li><li>Bronchoconstriction</li><li>Miosis (pupil constricts)</li><li>↑GI motility</li><li>↑Insulin secretion</li>
+        </ul></div>
+        <div class="col"><h4 style="color:var(--sym)">Sympathetic</h4><ul>
+          <li>"Fight-or-Flight"</li><li>↑HR, ↑BP, ↑RR</li><li>Bronchodilation</li><li>Mydriasis (pupil dilates)</li><li>↓GI motility</li><li>↓Insulin secretion</li>
+        </ul></div>
+      </div>
+      <div class="mnemonic"><b>SLUD</b> = signs of parasympathetic <b>over</b>stimulation: <b>S</b>alivation, <b>L</b>acrimation, <b>U</b>rination, <b>D</b>efecation. Remember: this is what happens when you're too relaxed to hold anything in!</div>
+      <div class="mnemonic"><b>Trick for pupils:</b> "Parasympathetic = Pinpoint" (both start with P) → miosis. Sympathetic = big, wide, scared eyes → mydriasis.</div>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>💊 Cholinergic vs Anticholinergic drug-effect table</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <div class="cmp">
+        <div class="col"><h4 style="color:var(--para)">Cholinergic (mimics ACh)</h4><ul>
+          <li>Ex: physostigmine, donepezil</li><li>Pupils: constrict (pinpoint)</li><li>HR/BP: decreased</li><li>Temp: no change</li><li>GI: active bowel sounds</li><li>Sweating: increased</li><li>Secretions/salivation: increased</li>
+        </ul></div>
+        <div class="col"><h4 style="color:var(--sym)">Anticholinergic (blocks ACh)</h4><ul>
+          <li>Ex: atropine, oxybutynin</li><li>Pupils: dilate</li><li>HR/BP: increased</li><li>Temp: increased</li><li>GI: slowed motility</li><li>Sweating: decreased</li><li>Secretions/salivation: decreased</li>
+        </ul></div>
+      </div>
+      <div class="mnemonic"><b>Classic anticholinergic mnemonic:</b> "Blind as a bat (dilated pupils), mad as a hatter (CNS effects), red as a beet (flushed/hot), hot as a hare (fever, ↑temp), dry as a bone (no secretions), the bowel and bladder lose their tone, and the heart runs alone (tachycardia)."</div>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>🔑 Keyhole Theory (why bigger side chains → more β2-specific)</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <svg class="dgm" viewBox="0 0 600 170" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="170" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
+        <text x="95" y="15" text-anchor="middle" font-size="12" fill="currentColor">α receptor — small keyhole</text>
+        <circle cx="95" cy="80" r="16" fill="none" stroke="currentColor"/>
+        <rect x="205" y="20" width="170" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
+        <text x="290" y="15" text-anchor="middle" font-size="12" fill="currentColor">β1 receptor — medium keyhole</text>
+        <circle cx="290" cy="80" r="26" fill="none" stroke="currentColor"/>
+        <rect x="400" y="20" width="190" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
+        <text x="495" y="15" text-anchor="middle" font-size="12" fill="currentColor">β2 receptor — large, deep keyhole</text>
+        <circle cx="495" cy="80" r="38" fill="none" stroke="currentColor"/>
+        <text x="495" y="160" text-anchor="middle" font-size="11" fill="currentColor">Big "key" (bulky side chain) only fits here</text>
+      </svg>
+      <ul class="points">
+        <li>Rule: the larger the amine side-chain on the catechol base, the greater the β2-receptor specificity</li>
+        <li>Think drug = key, receptor = lock. α = small keyhole, β1 = medium, β2 = large &amp; deep</li>
+        <li>A bulky side chain is too big to fit α or β1 → slides only into β2 → fewer cardiac/vascular side effects, more bronchodilation</li>
+      </ul>
+      <div class="mnemonic"><b>Trick:</b> "Bigger chain, better (β2) aim." This is also why albuterol/levalbuterol (bulky side chains) are far more β2-selective than epinephrine (small side chain, hits everything).</div>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>⏱️ Duration &amp; naming patterns (drug-suffix shortcuts)</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <ul class="points">
+        <li><b>"-terol"</b> ending = a β2 sympathomimetic bronchodilator (albuterol, levalbuterol, salmeterol, formoterol, arformoterol, olodaterol, indacaterol)</li>
+        <li><b>"-olol"</b> ending = a β-blocker/antiadrenergic (propranolol, atenolol, metoprolol) — the opposite job of the -terols</li>
+        <li><b>Ultrashort (&lt;3 hr):</b> racemic epinephrine</li>
+        <li><b>Short (4–6 hr) = "rescue/reliever":</b> albuterol, levalbuterol</li>
+        <li><b>Long (12–24 hr) = "controller/maintenance":</b> salmeterol, formoterol, arformoterol, olodaterol, vilanterol</li>
+      </ul>
+      <div class="mnemonic"><b>Trick:</b> Short-acting = "SOS" drugs (Save Our Symptoms right now). Long-acting = "scheduled," never for an acute attack.</div>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>🧬 R-isomer vs S-isomer (levalbuterol logic)</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <ul class="points">
+        <li>Albuterol is a racemic (50/50) mix of (R)- and (S)-isomers — nonsuperimposable mirror images</li>
+        <li><b>(R)-isomer</b> = active on airway β2 receptors → produces bronchodilation (levalbuterol = the pure R-isomer, "Xopenex")</li>
+        <li><b>(S)-isomer</b> = little/no bronchodilation, but may increase intracellular calcium, enhance airway hyperresponsiveness &amp; histamine/leukotriene contractile response in vitro, is metabolized more slowly, and accumulates in the lung — possibly worsening outcomes with chronic use</li>
+      </ul>
+      <div class="mnemonic"><b>Trick:</b> "R is Right (helps you breathe); S is Slower and Stays" (metabolized slower, sticks around, and is Suspected in the β-agonist controversy).</div>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>🚭 Why inhalation beats oral for catecholamines</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <ul class="points">
+        <li>Catecholamines are rapidly inactivated by <b>COMT</b> → duration limited to 1.5–3 hr</li>
+        <li>Also inactivated in the gut and liver → unsuitable for oral use (that's why saligenins like albuterol, which moved the substitution from carbon-4 to carbon-5, resist COMT and CAN be given orally, though inhalation is still preferred)</li>
+        <li>Also broken down by heat, light (store in amber bottle/foil), and air</li>
+        <li>Inhalation benefits: rapid onset, smaller doses, fewer systemic side effects, drug goes straight to the target organ, safe &amp; painless</li>
+        <li>Inhalation limitations: takes time, possible embarrassment, patient may be unable to use the device correctly</li>
+      </ul>
+      <div class="mnemonic"><b>Trick:</b> "COMT Chews it up" — remember COMT = the enzyme that limits catecholamine duration, forcing the inhaled route.</div>
+    </div></div>
+
+    <div class="card"><div class="acc-head"><h3>⚠️ Adverse effects &amp; the β-agonist controversy — quick recall list</h3><span class="arrow">▸</span></div><div class="acc-body">
+      <ul class="points">
+        <li><b>Adverse effects (mnemonic "TACT-CPMS"):</b> Tremor, cardiAc effects, tolerance to bronchodilation, loss of bronchoprotection, CNS effects, fall in PaO2, Metabolic disturbances (↑glucose, ↓K+), propellant toxicity/paradoxical bronchospasm, Sensitivity to additives</li>
+        <li><b>Asthma paradox / β-agonist controversy — 8 proposed reasons:</b> lack of steroid use, loss of bronchodilator effect, ↑bronchial hyperreactivity, exposure to triggers w/o symptoms, delayed care-seeking from temporary relief, poor compliance/education, accumulation of the (S)-isomer, environmental/lifestyle changes</li>
+      </ul>
+    </div></div>
+
+  </section>
+
+  <section id="flash" class="view">
+    <div class="filterbar" id="fc-filter"></div>
+    <div class="fc-wrap">
+      <div class="fc-progress" id="fc-prog">Card 1 of 1</div>
+      <div class="flash" id="flashcard" onclick="flipCard()">
+        <div class="flash-inner" id="flash-inner">
+          <div class="face front" id="fc-front"></div>
+          <div class="face back" id="fc-back"></div>
+        </div>
+      </div>
+      <div class="fc-controls">
+        <button class="btn secondary" onclick="prevCard()">◂ Prev</button>
+        <button class="btn secondary" onclick="flipCard()">Flip</button>
+        <button class="btn secondary" onclick="shuffleCards()">🔀 Shuffle</button>
+        <button class="btn" onclick="nextCard()">Next ▸</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="view">
+    <div id="quiz-area"></div>
+  </section>
+
+</main>
+<footer>Study guide generated from Day_Pharm_005 &amp; Day_Pharm_006 — every slide's content included. Good luck on your exam.</footer>
+
+<script>
+/* ---------------- CONTENT DATA ---------------- */
+const CH5 = [
+{t:"Organization of the Nervous System", p:[
+ "Central Nervous System (CNS): brain + spinal cord",
+ "Peripheral Nervous System (PNS): everything outside the CNS",
+ "PNS splits into Sensory (afferent) neurons — send info TO the CNS — and Motor (efferent) neurons",
+ "Efferent/motor neurons split into: Somatic neurons (voluntary, conscious control) and Autonomic nervous system (involuntary)",
+ "Autonomic nervous system splits into Sympathetic and Parasympathetic branches (plus the enteric nervous system for the gut)"
+]},
+{t:"Chapter Objectives (both slides)", p:[
+ "Define key terms of the central and peripheral nervous systems",
+ "Classify the branches of the nervous system",
+ "Differentiate among central, peripheral, and autonomic nervous systems",
+ "Discuss the use of neurotransmitters",
+ "Explain the difference between parasympathetic and sympathetic branches",
+ "Differentiate the effects of cholinergic vs anticholinergic agents",
+ "Differentiate the effects of adrenergic vs antiadrenergic agents",
+ "Discuss the various receptors in the airways",
+ "Differentiate among nonadrenergic, noncholinergic inhibitory, and excitatory nerves"
+]},
+{t:"Autonomic Branches — Anatomy of Origin", p:[
+ "Both systems can be manipulated by drug therapy, which mimics or blocks the control system to produce or inhibit physiologic effects",
+ "Parasympathetic fibers arise from the cranial and sacral portions of the spinal cord",
+ "Sympathetic fibers leave the cord primarily from the thoracic and lumbar regions",
+ "Preganglionic neuron soma: usually in the brainstem or sacral cord (Para) vs. usually in the spine (Sym)",
+ "Postganglionic neuron soma: in a ganglion near the target organ (Para) vs. in a sympathetic ganglion next to the spinal cord (Sym)"
+]},
+{t:"Neurotransmitter Control of Nerve Impulses", p:[
+ "Nerve impulse propagation is both electrical and chemical",
+ "Carried along nerve fibers by electrical action potentials",
+ "At synapses, transmission changes from electrical to chemical",
+ "Preganglionic synapse neurotransmitter (both branches): acetylcholine",
+ "Postganglionic synapse neurotransmitter — Parasympathetic: acetylcholine (or nitric oxide); Sympathetic: norepinephrine",
+ "Net result: Acetylcholine acts at parasympathetic end sites; Norepinephrine acts at sympathetic end sites"
+]},
+{t:"Parasympathetic: \"Rest-and-Digest\"", p:[
+ "Controls day-to-day bodily functions",
+ "Overstimulation = SLUD syndrome: Salivation, Lacrimation, Urination, Defecation"
+]},
+{t:"Sympathetic: \"Fight-or-Flight\"", p:[
+ "Reacts as a general alarm system",
+ "Increases HR, BP, blood glucose; causes bronchodilation",
+ "Not essential to life, but allows the body to cope with violent/acute stress",
+ "Effects mediated by: (1) neurotransmitter release from sympathetic nerves, and (2) circulating catecholamines (norepinephrine, epinephrine) released by the adrenal medulla"
+]},
+{t:"Efferent and Afferent Nerve Fibers", p:[
+ "Autonomic system is generally considered an efferent system",
+ "Efferent: carries signals FROM the brain/spinal cord TO the neuroeffector site (the decision → reaction pathway)",
+ "Afferent: carries signals FROM the periphery TO the spinal cord (the sensation pathway)"
+]},
+{t:"Terminology of Drugs Affecting the Nervous System", p:[
+ "Terms are based on which nerve fiber anatomy the drug affects",
+ "Parasympathomimetic = Cholinergic → stimulates the parasympathetic system (ACh receptor stimulation)",
+ "Parasympatholytic = Anticholinergic → blocks/inhibits the parasympathetic system (ACh receptor blocked)",
+ "Sympathomimetic = Adrenergic → stimulates the sympathetic system (norepinephrine or epinephrine receptor site)",
+ "Sympatholytic = Antiadrenergic → blocks/inhibits the sympathetic system"
+]},
+{t:"Parasympathetic Branch — how it's inactivated & effects", p:[
+ "The neurotransmitter conducts nerve transmission at the ganglionic site and at the postganglionic effector site at the end of the postganglionic fiber",
+ "Inactivation by cholinesterase enzymes",
+ "Effects occur via Muscarinic effects and Nicotinic effects",
+ "Subtypes of muscarinic receptors: M1, M2, M3 (highlighted), M4, M5"
+]},
+{t:"Parasympathetic Effects — Table 5-1", p:[
+ "Cardiopulmonary system: Decrease in heart rate, blood pressure, and respiratory rate; Bronchoconstriction",
+ "Eye: Miosis (constriction of pupil)",
+ "GI tract: Increased motility",
+ "Insulin secretion: Increased"
+]},
+{t:"Cholinergic Agents", p:[
+ "Direct acting — mimic acetylcholine: Methacholine, used as a diagnostic tool for asthma",
+ "Indirect acting — inhibit the cholinesterase enzyme: Neostigmine — used for myasthenia gravis and reversal of nondepolarizing muscle relaxants",
+ "Cholinesterase reactivator: Pralidoxime — treatment of organophosphate toxicity"
+]},
+{t:"Anticholinergic Agents", p:[
+ "Block acetylcholine receptors",
+ "Atropine = prototype parasympatholytic agent; acts as a competitive antagonist",
+ "Parasympatholytic (antimuscarinic) effects: bronchodilation, preoperative drying of secretions, antidiarrheal effect, prevention of bed-wetting in children",
+ "Also used to treat: peptic ulcers, organophosphate poisoning, mushroom ingestion, bradycardia"
+]},
+{t:"Cholinergic Drugs vs Anticholinergic Drugs (comparison infographic)", p:[
+ "Example — Cholinergic: physostigmine, donepezil | Anticholinergic: atropine, oxybutynin",
+ "Action — Cholinergic: mimics function of acetylcholine (activates parasympathetic NS) | Anticholinergic: blocks the action of acetylcholine",
+ "Pupils — Cholinergic: constrict (pinpoint) | Anticholinergic: dilate",
+ "HR and BP — Cholinergic: decreased | Anticholinergic: increased",
+ "Temp — Cholinergic: no change | Anticholinergic: increased",
+ "GI (bowel sounds/motility) — Cholinergic: active bowel sounds | Anticholinergic: slowed GI motility",
+ "Diaphoresis (sweating) — Cholinergic: increased sweating | Anticholinergic: decreased sweating",
+ "Salivation & urination/secretions — Cholinergic: increased | Anticholinergic: decreased"
+]},
+{t:"Sympathetic Branch", p:[
+ "Effects mediated by neurotransmitter release from sympathetic nerves AND circulating catecholamines (norepinephrine, epinephrine) from the adrenal medulla",
+ "\"You want to take a flight or have a fight.\""
+]},
+{t:"Sympathetic Effects — Table 5-4", p:[
+ "Cardiopulmonary system: Increase in HR, BP, RR; Bronchodilation",
+ "Eye: Mydriasis (pupil dilation)",
+ "GI tract: Decreased motility",
+ "Insulin secretion: Decreased"
+]},
+{t:"Sympathetic (Adrenergic) Receptor Types — Table 5-5", p:[
+ "α-Receptors: α1- and α2-receptors",
+ "β-Receptors: β1- and β2-receptors",
+ "Dopaminergic receptors: respond to dopamine, a chemical precursor of norepinephrine"
+]},
+{t:"Sympathomimetic and Sympatholytic Agents — Table 5-6", p:[
+ "Sympathomimetics: stimulate the sympathetic system and produce adrenergic effects",
+ "Sympatholytics: block adrenergic effects"
+]},
+{t:"Drugs of Adrenergic Agonists & Antagonists (infographic)", p:[
+ "α1 AGONISTS: Phenylephrine, Methoxamine, Midodrine",
+ "α2 AGONISTS: Clonidine, Methyldopa, Dexmedetomidine",
+ "β1 AGONISTS: Dobutamine, Dopamine (low dose)",
+ "β2 AGONISTS: Salbutamol (Albuterol), Terbutaline, Formoterol",
+ "α1 ANTAGONISTS: Prazosin, Doxazosin, Terazosin",
+ "α2 ANTAGONISTS: Yohimbine",
+ "β1 ANTAGONISTS: Propranolol, Atenolol, Metoprolol",
+ "β2 ANTAGONISTS (as listed): Ipratropium",
+ "Common uses — Agonists: increase/decrease BP, treat asthma (bronchodilation), improve cardiac output, treat shock",
+ "Common uses — Antagonists: treat hypertension, treat angina, control arrhythmias, reduce anxiety (β-blockers)"
+]},
+{t:"Neural Control of Lung Function (1 of 2) — Effector Sites", p:[
+ "Airway smooth muscle",
+ "Submucosal and surface secretory cells",
+ "Bronchial epithelium",
+ "Pulmonary and bronchial blood vessels"
+]},
+{t:"Neural Control of Lung Function (2 of 2) — Inflammatory Mediator Receptors", p:[
+ "Histamine receptors: especially the H1 type",
+ "Prostaglandin receptors: e.g., prostacyclin, prostaglandin D2 (PGD2), prostaglandin F2α (PGF2α), and thromboxane A2",
+ "Leukotriene receptors: LTB4 and the C4-D4-E4 series — formerly termed slow-reacting substance of anaphylaxis (SRS-A)",
+ "Platelet-activating factor (PAF) receptors",
+ "Adenosine receptors: A1 and A2",
+ "Bradykinin receptors"
+]},
+{t:"Sympathetic Innervation and Effects (airway)", p:[
+ "Direct effects: refer to direct innervation of tissue sites by nerve fibers",
+ "Indirect effects: mediated by the release of circulating epinephrine and norepinephrine",
+ "Airway smooth muscle: little or no direct sympathetic innervation",
+ "Lung blood vessels & mucous glands: affected by sympathetic activity"
+]},
+{t:"Parasympathetic Innervation and Effects (airway)", p:[
+ "Muscarinic receptors in the airway: M1 Receptors, M2 Receptors, M3 Receptors",
+ "Muscarinic receptors also present on blood vessels"
+]},
+{t:"Nonadrenergic, Noncholinergic (NANC) Inhibitory Nerves", p:[
+ "Neither parasympathetic nor sympathetic",
+ "Cause relaxation of smooth airway muscle → bronchodilation",
+ "May be mediated by the neurotransmitter vasoactive intestinal peptide (VIP) or by nitric oxide (NO)"
+]},
+{t:"Nonadrenergic, Noncholinergic (NANC) Excitatory Nerves", p:[
+ "Neither parasympathetic nor sympathetic",
+ "Cause contraction of smooth airway muscle → bronchoconstriction",
+ "Excitatory effects (like bronchoconstriction) are produced by afferent sensory fibers that release substance P as a neurotransmitter"
+]}
+];
+
+const CH6 = [
+{t:"Chapter Overview", p:["Chapter 6: Adrenergic (Sympathomimetic) Bronchodilators"]},
+{t:"Review — Catecholamine Neurotransmitters", p:[
+ "Dopamine: controls movement, motivation, and the brain's reward pathways",
+ "Norepinephrine (Noradrenaline): increases heart rate and blood pressure to manage stress",
+ "Epinephrine (Adrenaline): triggers the fight-or-flight response, boosting blood flow to heart, lungs, and muscles"
+]},
+{t:"Catecholamines", p:[
+ "Sympathomimetic bronchodilators are either catecholamines or derivatives of catecholamines",
+ "Catecholamines mimic epinephrine",
+ "Effects: tachycardia, elevated BP, smooth muscle relaxation (bronchioles and skeletal muscle blood vessels), glycogenolysis, skeletal muscle tremor, CNS stimulation"
+]},
+{t:"Clinical Indications for Adrenergic Bronchodilators", p:[
+ "Relaxation of smooth airway muscle in the presence of reversible obstruction",
+ "Asthma: acute, chronic, exercise-induced",
+ "Bronchitis — Acute bronchitis: short-term, often from a cold/viral infection, usually improves within a week to 10 days (dry cough may linger weeks)",
+ "Chronic bronchitis: long-term condition — constant bronchial irritation + daily productive cough ≥3 months/year for 2 consecutive years, primarily caused by smoking",
+ "Emphysema: chronic loss of alveoli structure",
+ "Bronchiectasis: thick inflamed airways and thick secretions",
+ "Other obstructive airway disease: cystic fibrosis"
+]},
+{t:"Indications for Short-Acting Agents", p:[
+ "Acute reversible airflow obstruction in asthma or other obstructive airway diseases",
+ "Patient feels effects within minutes — a.k.a. \"rescue\" agents / \"relievers\"",
+ "Examples: Albuterol, Levalbuterol"
+]},
+{t:"Indications for Long-Acting Agents", p:[
+ "Maintenance (NOT rescue) bronchodilation, control of bronchospasm, control of nocturnal symptoms — longer duration",
+ "a.k.a. \"controllers\"",
+ "Examples: Salmeterol, Formoterol, Arformoterol, Olodaterol, Vilanterol"
+]},
+{t:"Indications for Racemic Epinephrine", p:[
+ "Used for its strong α-adrenergic vasoconstricting effect",
+ "To reduce airway swelling after extubation",
+ "To control airway bleeding during endoscopy",
+ "To reduce airway swelling generally",
+ "SVN dose: 2.25% solution, 0.25–0.5 mL (5.63–11.25 mg) qid",
+ "Used for: postextubation stridor, epiglottitis, croup",
+ "NOT effective as a bronchodilator"
+]},
+{t:"Specific Adrenergic Agents & Formulations — Duration Classes", p:[
+ "Ultrashort acting (duration <3 hours): Racemic epinephrine",
+ "Short acting (duration 4–6 hours): Albuterol, Levalbuterol",
+ "Long acting (duration 12–24 hours): Salmeterol, Formoterol, Arformoterol, Olodaterol, Vilanterol"
+]},
+{t:"Adrenergic Bronchodilators as Stereoisomers", p:[
+ "Stereoisomers = nonsuperimposable molecular mirror images",
+ "(R)-isomer (right isomer, a.k.a. dextro isomer): active on airway β2 receptors → produces bronchodilation",
+ "(S)-isomer (left isomer): little to no bronchodilation",
+ "Both isomers have similar physical/chemical properties but different physiological effects",
+ "Example: levalbuterol is R-specific"
+]},
+{t:"Epinephrine — Rapid Onset / Short Duration (Primatene Mist)", p:[
+ "Potent catecholamine bronchodilator",
+ "Stimulates both α- and β-receptors",
+ "High prevalence of side effects: tachycardia, increased BP, tremor, headache, insomnia",
+ "Brand example: Primatene Mist"
+]},
+{t:"Keyhole Theory — α to β2 Specificity", p:[
+ "Explains the shift from α activity to β2 specificity",
+ "Core rule: the larger the chemical side-chain attached to a catechol base, the greater its β2 receptor specificity",
+ "Think of the drug as a key and the cellular receptor as a lock (keyhole)",
+ "α receptors: small keyhole — large keys cannot fit",
+ "β1 receptors: medium-sized keyhole",
+ "β2 receptors: large, deep keyhole",
+ "Making the amine side-chain bigger makes the molecule too bulky for α or β1 → it slides exclusively into the large β2 slot"
+]},
+{t:"Metabolism of Catecholamines", p:[
+ "Rapidly inactivated by COMT (catechol-O-methyltransferase)",
+ "Duration of action is limited: 1.5 to 3 hours",
+ "Newer agents moved the substitution from the carbon-4 to the carbon-5 site of the chemical chain to resist this",
+ "Unsuitable for oral administration — inactivated in the gut and liver — this is why the inhalation route is best",
+ "Also inactivated by: heat, light (must be stored in an amber bottle or foil packaging), and air"
+]},
+{t:"Saligenin Agents", p:[
+ "Benefits: β2 preference, effective by mouth, peak effect in 30–60 minutes, duration of 4–6 hours",
+ "Examples: Albuterol, Levalbuterol"
+]},
+{t:"Albuterol", p:[
+ "Available as: MDI, DPI, Nebulizer, Syrup, Extended-release tablets",
+ "Onset: 15 min | Peak: 30–60 min | Duration: 5–12 hr"
+]},
+{t:"Levalbuterol — The (R)-Isomer of Albuterol", p:[
+ "Pure (R)-isomer of racemic albuterol; brand name Xopenex",
+ "Available as: MDI, Nebulizer",
+ "Four nebulizer doses: 0.31 mg/3 mL, 0.63 mg/3 mL, 1.25 mg/3 mL, 1.25 mg/0.5 mL concentrate"
+]},
+{t:"Effects & Characteristics of the (S)-Isomer of Albuterol", p:[
+ "Increases intracellular calcium concentration in vitro",
+ "Its activity is blocked by the anticholinergic agent atropine",
+ "Does NOT produce pulmonary or extrapulmonary β2-mediated effects",
+ "Enhances experimental airway responsiveness in vitro",
+ "Increases contractile response of bronchial tissue to histamine or leukotriene in vitro",
+ "Enhances eosinophil superoxide production",
+ "Metabolized slower than (R)-albuterol in vivo",
+ "Preferentially retained in the lung when inhaled by an MDI"
+]},
+{t:"Single (R)-Isomer Formulation of Albuterol (levalbuterol) — Findings", p:[
+ "Side effects of tremor and heart rate changes were LESS than racemic albuterol",
+ "1.25 mg levalbuterol dose showed a higher peak effect on FEV1 than racemic albuterol",
+ "At similar doses, side effects were similar to racemic albuterol"
+]},
+{t:"Long-Acting β-Adrenergic Agents", p:[
+ "Offer less frequent dosing and nocturnal protection",
+ "Extended-release albuterol",
+ "Salmeterol (Serevent)",
+ "Formoterol (Performist)",
+ "Arformoterol (Brovana)",
+ "Indacaterol (Arcapta Neohaler)",
+ "Olodaterol (Striverdi Respimat)"
+]},
+{t:"Extended-Release Albuterol", p:[
+ "Available as Vospire ER",
+ "4-mg or 8-mg oral tablet",
+ "Activity time: 8–12 hours"
+]},
+{t:"Salmeterol (Serevent Diskus)", p:[
+ "Available as a DPI",
+ "Bronchodilator effect: slower onset than albuterol (20 minutes)",
+ "Time to peak bronchodilating effect: 3–5 hours",
+ "Duration: 12 hours"
+]},
+{t:"Formoterol (Performist, Foradil)", p:[
+ "β2-selective agonist",
+ "Short time to bronchodilatory effect: 3 minutes",
+ "Duration of up to 12 hours",
+ "Available as an SVN and a DPI",
+ "Approved for: maintenance treatment of asthma; acute prevention of exercise-induced bronchospasm in adults and children ≥5 years old"
+]},
+{t:"Antiinflammatory Effects (Salmeterol/Formoterol)", p:[
+ "Salmeterol and formoterol inhibit mast cell activation",
+ "In vitro results only — NOT clinically proven"
+]},
+{t:"Arformoterol (Brovana)", p:[
+ "β2-selective agonist; single isomer of formoterol",
+ "Duration of up to 12 hours",
+ "Available as a nebulizer solution",
+ "Approved for: maintenance treatment of COPD"
+]},
+{t:"Olodaterol (Striverdi Respimat)", p:[
+ "β2-selective agonist; ultra-long lasting",
+ "Duration of up to 24 hours",
+ "Approved for: maintenance treatment of COPD"
+]},
+{t:"Vilanterol", p:[
+ "Not available as monotherapy",
+ "β2-selective agonist approved only in fixed combinations:",
+ "+ Fluticasone → Breo Ellipta",
+ "+ Umeclidinium → Anoro Ellipta",
+ "+ Fluticasone and umeclidinium → Trelegy Ellipta",
+ "Ultra-long lasting"
+]},
+{t:"Safety Concerns with Long-Acting β2 Agonists (LABAs)", p:[
+ "Not to be used: without a controller medication; by patients already controlled on low- or medium-dose ICS",
+ "Should be used: only if patients are not controlled with ICS; short term only",
+ "Children must use an LABA in conjunction with a corticosteroid"
+]},
+{t:"SABAs and LABAs (1 of 3) — Antiinflammatory Effects & Clinical Use", p:[
+ "Both SABAs and LABAs show antiinflammatory effects in vitro",
+ "Not shown to inhibit accumulation of inflammatory cells in the airway or increased inflammatory markers in vivo",
+ "LABAs are indicated for maintenance therapy of asthma"
+]},
+{t:"SABAs and LABAs (2 of 3) — Differences", p:[
+ "LABAs are NOT recommended for rescue bronchodilation",
+ "A SABA should be prescribed/available for breakthrough symptoms between scheduled LABA doses",
+ "SABAs and LABAs are NOT a substitute for inhaled corticosteroids",
+ "Onset-rate differences (salmeterol vs formoterol/indacaterol/olodaterol) may justify classifying β2 agonists as \"fast\" and \"slow\" in addition to \"short\" and \"long\" acting"
+]},
+{t:"SABAs and LABAs (3 of 3) — LABA Safety Concerns", p:[
+ "LABAs are not to be used without a controller medication",
+ "LABAs should not be used by patients whose asthma is controlled on low-/medium-dose inhaled corticosteroids",
+ "LABAs should be used only if asthma is not controlled with agents like inhaled corticosteroids",
+ "LABAs should be for short-term use only",
+ "Children should use an LABA only in conjunction with a corticosteroid"
+]},
+{t:"Mechanism of Action (receptor-level)", p:[
+ "α-receptor stimulation → vasoconstriction effect",
+ "β1-receptor stimulation → increased heart rate and contractile force",
+ "β2-receptor stimulation → relaxation of bronchial smooth muscle"
+]},
+{t:"β- and α-Receptor Activation Pathways", p:[
+ "β-receptor: binds drug, ultimately causes increased synthesis of cAMP",
+ "α-receptor: inhibits release of neurotransmitter from the presynaptic neuron, and may also lower the synthesis of intracellular cAMP"
+]},
+{t:"α1-Receptor Activation", p:[
+ "Agonists such as: Phenylephrine, Epinephrine",
+ "Results in vasoconstriction of peripheral blood vessels"
+]},
+{t:"Long-Acting β-Agonist: Mechanism of Action", p:[
+ "Lipophilic — approaches the β-receptor laterally (through the membrane)",
+ "Can also approach the receptor from the aqueous phase"
+]},
+{t:"Routes of Administration", p:[
+ "Inhalation: MDI, DPI, Nebulizer solution, Respimat",
+ "Orally: Tablets, Syrup",
+ "Parenterally: Injection",
+ "Note: not all agents are available in every form"
+]},
+{t:"Inhalation Route", p:[
+ "Catecholamines are ineffective orally",
+ "Benefits: rapid onset, smaller doses, reduced side effects, drug delivered directly to the target organ, relatively safe and painless",
+ "Limitations: time required, possible embarrassment, inability to use the device correctly"
+]},
+{t:"Continuous Nebulization of Albuterol (1 of 2)", p:[
+ "Used to manage severe asthma, in an effort to avoid respiratory failure, intubation, and mechanical ventilation",
+ "Simplifies frequent treatments",
+ "Generally 10 to 15 mg/hour for an adult",
+ "NAEPP EPR-3 guideline: 2.5–5 mg by nebulizer every 20 minutes for 3 doses, then 10–15 mg/hr by continuous nebulization (since one neb treatment takes ~10 min, giving 3 treatments every 20 min requires repeated therapist attendance — continuous administration simplifies this)"
+]},
+{t:"Continuous Nebulization of Albuterol (2 of 2)", p:[
+ "Delivery methods: refilling SVN, volumetric infusion pump, large-volume nebulizer, HEART or HOPE nebulizer",
+ "Toxicity and monitoring: potential complications include cardiac arrhythmias, hypokalemia, and hyperglycemia"
+]},
+{t:"Oral Route", p:[
+ "Advantages: ease, simplicity, short administration time, exact reproducibility/control of dosage",
+ "NOT the preferred route clinically",
+ "Larger doses are required than with inhalation",
+ "Frequency and degree of unwanted side effects increases substantially"
+]},
+{t:"Parenteral Route", p:[
+ "Given subcutaneously and intravenously, usually in the emergency management of acute asthma",
+ "Subcutaneous Epinephrine: 0.3 mg (0.3 mL of 1:1000 strength) every 15–20 minutes, up to 1 mg in 2 hours",
+ "Subcutaneous Terbutaline: 0.25 mg (0.25 mL of a 1-mg/mL solution) repeated every 15–30 minutes, not exceeding 0.5 mg in 4 hours"
+]},
+{t:"Adverse Side Effects", p:[
+ "Side effect = any effect other than the intended therapeutic effect",
+ "Tremor",
+ "Cardiac effects",
+ "Tolerance to bronchodilator effect",
+ "Loss of bronchoprotection",
+ "CNS effects",
+ "Fall in PaO2",
+ "Metabolic disturbances (↑glucose, ↓potassium — corticosteroids can potentiate β-agonist response by upregulating receptors and increasing high-affinity binding, and inhibit inflammatory mediator release such as PLA2/cytokines/PAF; high-dose β-agonists can even be used to treat hyperkalemia)",
+ "Propellant toxicity and paradoxical bronchospasm",
+ "Sensitivity to additives"
+]},
+{t:"Compatibility of Other Agents with Bronchodilators", p:[
+ "Respiratory therapists often mix multiple agents into the liquid medication cup of a nebulizer",
+ "However, mixing most (if not all) agents with other agents is NOT FDA approved"
+]},
+{t:"β-Agonist Controversy (1 of 2)", p:[
+ "Asthma paradox: increasing evidence of asthma mortality/morbidity despite treatment advances",
+ "Possible causes: lack of steroid use? Loss of bronchodilator effect? Increase in bronchial hyperreactivity? Exposure to triggers with no immediate symptoms?"
+]},
+{t:"β-Agonist Controversy (2 of 2)", p:[
+ "Additional possible causes: temporary relief leads to delay in seeking medical help; poor patient compliance/education; accumulation of the (S)-isomer; environmental pollution and lifestyle changes"
+]},
+{t:"Respiratory Care Assessment of β-Agonist Therapy (1 of 3)", p:[
+ "Assess effectiveness of the drug based on indications for use",
+ "Monitor peak flow rates",
+ "Perform physical assessment before/after treatment",
+ "Monitor heart rate for a 20% increase",
+ "Note subjective reactions"
+]},
+{t:"Respiratory Care Assessment of β-Agonist Therapy (2 of 3)", p:[
+ "ABGs",
+ "Monitor glucose and potassium (K+)",
+ "PFTs (pulmonary function tests)",
+ "Provide patient education",
+ "Instruct/verify correct use of devices"
+]},
+{t:"Respiratory Care Assessment of β-Agonist Therapy (3 of 3) — For LABAs", p:[
+ "Assess ongoing lung function",
+ "Assess use of rescue drug and nocturnal symptoms",
+ "Assess the number of exacerbations",
+ "Assess days absent from work/school",
+ "Assess the ability to reduce the dose of inhaled corticosteroids"
+]}
+];
+
+/* ---------------- FLASHCARDS ---------------- */
+const FLASHCARDS = [
+{c:"CH5",q:"What are the two main divisions of the CNS?",a:"Brain and spinal cord."},
+{c:"CH5",q:"What are the two efferent divisions of the peripheral nervous system?",a:"Somatic (voluntary) and Autonomic (involuntary) neurons."},
+{c:"CH5",q:"Define afferent vs efferent nerve fibers.",a:"Afferent = periphery → spinal cord (sensory). Efferent = brain/spinal cord → neuroeffector site (motor)."},
+{c:"CH5",q:"Where do parasympathetic fibers originate anatomically?",a:"Cranial and sacral portions of the spinal cord."},
+{c:"CH5",q:"Where do sympathetic fibers originate anatomically?",a:"Thoracic and lumbar regions of the spinal cord."},
+{c:"CH5",q:"Neurotransmitter at parasympathetic postganglionic end sites?",a:"Acetylcholine (ACh) — sometimes nitric oxide."},
+{c:"CH5",q:"Neurotransmitter at sympathetic postganglionic end sites?",a:"Norepinephrine."},
+{c:"CH5",q:"What does SLUD stand for and when does it occur?",a:"Salivation, Lacrimation, Urination, Defecation — from parasympathetic OVERstimulation."},
+{c:"CH5",q:"Parasympathomimetic = ?",a:"Cholinergic (stimulates parasympathetic system via ACh receptor stimulation)."},
+{c:"CH5",q:"Parasympatholytic = ?",a:"Anticholinergic (blocks ACh receptors)."},
+{c:"CH5",q:"Sympathomimetic = ?",a:"Adrenergic (stimulates via NE or Epi receptor sites)."},
+{c:"CH5",q:"Sympatholytic = ?",a:"Antiadrenergic (blocks sympathetic effects)."},
+{c:"CH5",q:"Parasympathetic effects on HR, BP, RR, airway, pupil, GI, insulin?",a:"↓HR/BP/RR, bronchoconstriction, miosis, ↑GI motility, ↑insulin secretion."},
+{c:"CH5",q:"Sympathetic effects on HR, BP, RR, airway, pupil, GI, insulin?",a:"↑HR/BP/RR, bronchodilation, mydriasis, ↓GI motility, ↓insulin secretion."},
+{c:"CH5",q:"Give an example of a direct-acting cholinergic agent and its use.",a:"Methacholine — used as a diagnostic tool for asthma."},
+{c:"CH5",q:"Give an example of an indirect-acting cholinergic agent and its uses.",a:"Neostigmine — inhibits cholinesterase; used for myasthenia gravis and to reverse nondepolarizing muscle relaxants."},
+{c:"CH5",q:"What is pralidoxime used for?",a:"A cholinesterase reactivator used to treat organophosphate toxicity."},
+{c:"CH5",q:"What is the prototype anticholinergic (parasympatholytic) drug?",a:"Atropine — a competitive antagonist that blocks ACh receptors."},
+{c:"CH5",q:"List 4 clinical effects/uses of anticholinergic agents.",a:"Bronchodilation, preop drying of secretions, antidiarrheal effect, prevention of bed-wetting in children (also: peptic ulcers, organophosphate poisoning, mushroom ingestion, bradycardia)."},
+{c:"CH5",q:"Cholinergic drugs: pupil effect?",a:"Constrict (miosis/pinpoint)."},
+{c:"CH5",q:"Anticholinergic drugs: pupil effect?",a:"Dilate (mydriasis)."},
+{c:"CH5",q:"Cholinergic vs anticholinergic: effect on secretions?",a:"Cholinergic = increased secretions/salivation. Anticholinergic = decreased secretions."},
+{c:"CH5",q:"What are the two sources of sympathetic effects?",a:"Neurotransmitter release from sympathetic nerves, and circulating catecholamines (norepinephrine, epinephrine) from the adrenal medulla."},
+{c:"CH5",q:"Name the 3 sympathetic (adrenergic) receptor categories.",a:"α-receptors (α1, α2), β-receptors (β1, β2), and dopaminergic receptors."},
+{c:"CH5",q:"What do dopaminergic receptors respond to?",a:"Dopamine, a chemical precursor of norepinephrine."},
+{c:"CH5",q:"Name 3 α1 agonists.",a:"Phenylephrine, Methoxamine, Midodrine."},
+{c:"CH5",q:"Name 3 α2 agonists.",a:"Clonidine, Methyldopa, Dexmedetomidine."},
+{c:"CH5",q:"Name 2 β1 agonists.",a:"Dobutamine, Dopamine (low dose)."},
+{c:"CH5",q:"Name 3 β2 agonists.",a:"Salbutamol (Albuterol), Terbutaline, Formoterol."},
+{c:"CH5",q:"Name 3 β1 antagonists (beta-blockers).",a:"Propranolol, Atenolol, Metoprolol."},
+{c:"CH5",q:"Which receptors detect histamine in the airway, and which subtype?",a:"Histamine receptors, especially the H1 type."},
+{c:"CH5",q:"What was SRS-A and what is it now called?",a:"Slow-reacting substance of anaphylaxis — now known as the leukotriene C4-D4-E4 series."},
+{c:"CH5",q:"Does the airway smooth muscle have direct sympathetic innervation?",a:"Little to no direct sympathetic innervation — sympathetic effects on airway smooth muscle are mainly indirect, via circulating epi/norepi."},
+{c:"CH5",q:"Name the 3 muscarinic receptor subtypes found in the airway.",a:"M1, M2, and M3 receptors."},
+{c:"CH5",q:"What are NANC inhibitory nerves and what do they cause?",a:"Nonadrenergic, noncholinergic nerves that cause relaxation of airway smooth muscle (bronchodilation), mediated by VIP or nitric oxide (NO)."},
+{c:"CH5",q:"What are NANC excitatory nerves and what do they cause?",a:"Nonadrenergic, noncholinergic afferent sensory fibers that cause contraction of airway smooth muscle (bronchoconstriction) via substance P."},
+{c:"CH6",q:"What is the primary effect of catecholamines (mimicking epinephrine)?",a:"Tachycardia, elevated BP, smooth muscle relaxation (bronchioles/skeletal muscle vessels), glycogenolysis, skeletal muscle tremor, CNS stimulation."},
+{c:"CH6",q:"Define chronic bronchitis by its diagnostic criteria.",a:"Daily productive cough for at least 3 months/year for 2 consecutive years, primarily caused by smoking."},
+{c:"CH6",q:"What are short-acting β-agonists (SABAs) also called, and give 2 examples.",a:"\"Rescue\" agents / \"relievers\" — Albuterol, Levalbuterol."},
+{c:"CH6",q:"What are long-acting β-agonists (LABAs) also called, and name 3 examples.",a:"\"Controllers\" — Salmeterol, Formoterol, Arformoterol (also Olodaterol, Vilanterol)."},
+{c:"CH6",q:"Is racemic epinephrine an effective bronchodilator?",a:"No — it's used for its α-adrenergic vasoconstricting effect (e.g., postextubation stridor, epiglottitis, croup), NOT as a bronchodilator."},
+{c:"CH6",q:"What is the SVN dose of racemic epinephrine?",a:"2.25% solution, 0.25–0.5 mL (5.63–11.25 mg) qid."},
+{c:"CH6",q:"Duration of ultrashort-, short-, and long-acting adrenergic agents?",a:"Ultrashort <3 hr (racemic epi); Short 4–6 hr (albuterol, levalbuterol); Long 12–24 hr (salmeterol, formoterol, arformoterol, olodaterol, vilanterol)."},
+{c:"CH6",q:"Which isomer of albuterol produces bronchodilation — R or S?",a:"The (R)-isomer is active on β2 receptors and produces bronchodilation. The (S)-isomer produces little to none."},
+{c:"CH6",q:"What is levalbuterol and its brand name?",a:"The pure (R)-isomer of racemic albuterol; brand name Xopenex."},
+{c:"CH6",q:"State the core rule of the keyhole theory.",a:"The larger the chemical side-chain on the catechol base, the greater its β2 receptor specificity."},
+{c:"CH6",q:"Which enzyme rapidly inactivates catecholamines, and what's the resulting duration?",a:"COMT (catechol-O-methyltransferase); duration limited to 1.5–3 hours."},
+{c:"CH6",q:"Why are catecholamines unsuitable for oral administration?",a:"They're inactivated in the gut and liver — this is why the inhalation route is best."},
+{c:"CH6",q:"Besides gut/liver metabolism, what else inactivates catecholamines?",a:"Heat, light (must store in amber bottle/foil), and air."},
+{c:"CH6",q:"What structural change created saligenin agents, and name one benefit?",a:"Moved substitution from carbon-4 to carbon-5 of the chemical chain; benefit: effective by mouth with β2 preference (peak 30–60 min, duration 4–6 hr)."},
+{c:"CH6",q:"Albuterol: onset, peak, duration?",a:"Onset 15 min, Peak 30–60 min, Duration 5–12 hr."},
+{c:"CH6",q:"Levalbuterol nebulizer doses (all 4)?",a:"0.31 mg/3 mL, 0.63 mg/3 mL, 1.25 mg/3 mL, 1.25 mg/0.5 mL concentrate."},
+{c:"CH6",q:"List 3 in-vitro effects of the (S)-isomer of albuterol.",a:"Increases intracellular calcium, enhances airway responsiveness, increases bronchial contractile response to histamine/leukotriene (also enhances eosinophil superoxide production, metabolized slower, retained in lung)."},
+{c:"CH6",q:"How did the single (R)-isomer (levalbuterol) formulation compare to racemic albuterol?",a:"Less tremor and HR side effects; the 1.25 mg dose showed a higher peak FEV1 effect than racemic albuterol."},
+{c:"CH6",q:"Salmeterol brand name, onset, peak, duration?",a:"Serevent Diskus (DPI); onset 20 min; peak 3–5 hr; duration 12 hr."},
+{c:"CH6",q:"Formoterol onset and duration, and what is it approved for?",a:"Onset ~3 min, duration up to 12 hr; approved for asthma maintenance and exercise-induced bronchospasm prevention (age ≥5)."},
+{c:"CH6",q:"Arformoterol: relationship to formoterol, and approved use?",a:"Single isomer of formoterol; nebulizer solution; approved for COPD maintenance."},
+{c:"CH6",q:"Olodaterol: duration and approved use?",a:"Ultra-long, up to 24 hours; approved for COPD maintenance (Striverdi Respimat)."},
+{c:"CH6",q:"Is vilanterol available alone?",a:"No — only in fixed combinations: Breo Ellipta (+fluticasone), Anoro Ellipta (+umeclidinium), Trelegy Ellipta (+fluticasone & umeclidinium)."},
+{c:"CH6",q:"When should LABAs NOT be used (2 key rules)?",a:"Without a controller medication, and not by patients already controlled on low-/medium-dose inhaled corticosteroids."},
+{c:"CH6",q:"Children using an LABA must also use what?",a:"A corticosteroid — LABAs are never monotherapy in children."},
+{c:"CH6",q:"α-receptor vs β-receptor stimulation: general effect on cAMP?",a:"β-receptor binding increases cAMP synthesis; α-receptor stimulation inhibits presynaptic neurotransmitter release and may lower intracellular cAMP."},
+{c:"CH6",q:"α1-receptor activation causes what effect?",a:"Vasoconstriction of peripheral blood vessels (via agonists like phenylephrine, epinephrine)."},
+{c:"CH6",q:"β1 vs β2 receptor stimulation effects?",a:"β1 → increased HR and contractile force; β2 → relaxation of bronchial smooth muscle."},
+{c:"CH6",q:"How does a lipophilic LABA reach the β-receptor?",a:"Approaches laterally through the membrane, or from the aqueous phase."},
+{c:"CH6",q:"List the three general routes of administration for adrenergic bronchodilators.",a:"Inhalation (MDI, DPI, nebulizer, Respimat), Oral (tablets, syrup), Parenteral (injection)."},
+{c:"CH6",q:"Give 3 benefits of the inhalation route.",a:"Rapid onset, smaller doses needed, reduced systemic side effects (also: direct delivery, safe & painless)."},
+{c:"CH6",q:"Continuous nebulization of albuterol: typical adult dose rate?",a:"10–15 mg/hour."},
+{c:"CH6",q:"NAEPP EPR-3 recommendation before continuous nebulization?",a:"2.5–5 mg by nebulizer every 20 minutes for 3 doses, then 10–15 mg/hr continuous."},
+{c:"CH6",q:"Toxicity risks of continuous albuterol nebulization?",a:"Cardiac arrhythmias, hypokalemia, hyperglycemia."},
+{c:"CH6",q:"Why is the oral route not preferred clinically despite its ease?",a:"Requires larger doses than inhalation and causes substantially more frequent/severe side effects."},
+{c:"CH6",q:"Subcutaneous epinephrine dose for acute asthma?",a:"0.3 mg (0.3 mL of 1:1000) every 15–20 min, up to 1 mg in 2 hours."},
+{c:"CH6",q:"Subcutaneous terbutaline dose for acute asthma?",a:"0.25 mg every 15–30 min, not exceeding 0.5 mg in 4 hours."},
+{c:"CH6",q:"List 5 adverse effects of adrenergic bronchodilators.",a:"Tremor, cardiac effects, tolerance to bronchodilation, loss of bronchoprotection, CNS effects (also: fall in PaO2, metabolic disturbances, propellant toxicity/paradoxical bronchospasm, sensitivity to additives)."},
+{c:"CH6",q:"Is mixing multiple bronchodilator agents in one nebulizer cup FDA approved?",a:"No — mixing most/all agents together is not FDA approved, even though it's common practice."},
+{c:"CH6",q:"Name 4 proposed explanations for the β-agonist controversy / asthma paradox.",a:"Lack of steroid use, loss of bronchodilator effect, increased bronchial hyperreactivity, accumulation of the (S)-isomer (also: delayed care-seeking, poor compliance, environmental/lifestyle changes)."},
+{c:"CH6",q:"For LABA therapy specifically, what should RT assessment include?",a:"Ongoing lung function, rescue drug use/nocturnal symptoms, number of exacerbations, days absent from work/school, ability to reduce ICS dose."}
+];
+
+/* ---------------- QUIZ ---------------- */
+const QUIZ = [
+{q:"A patient is described as having 'rest-and-digest' physiology dominating. Which branch of the ANS is active?",
+ o:["Sympathetic","Parasympathetic","Somatic","Enteric only"], a:1,
+ e:"Parasympathetic controls day-to-day, 'rest-and-digest' functions."},
+{q:"Overstimulation of the parasympathetic system produces SLUD syndrome. What does the 'U' stand for?",
+ o:["Urgency","Urination","Uveitis","Ulceration"], a:1, e:"SLUD = Salivation, Lacrimation, Urination, Defecation."},
+{q:"Which term is equivalent to 'cholinergic'?",
+ o:["Sympatholytic","Parasympatholytic","Parasympathomimetic","Sympathomimetic"], a:2,
+ e:"Parasympathomimetic = cholinergic — both mean stimulation of the parasympathetic system via ACh receptors."},
+{q:"Where do sympathetic nerve fibers originate?",
+ o:["Cranial and sacral cord","Thoracic and lumbar cord","Cervical cord only","Brainstem only"], a:1,
+ e:"Sympathetic fibers leave the cord primarily from the thoracic and lumbar regions."},
+{q:"Atropine is best described as which of the following?",
+ o:["A direct-acting cholinergic agonist","A prototype competitive antagonist at ACh receptors","A cholinesterase reactivator","A β2-selective agonist"], a:1,
+ e:"Atropine is the prototype parasympatholytic (anticholinergic) agent, acting as a competitive antagonist."},
+{q:"Methacholine is primarily used clinically as a:",
+ o:["Bronchodilator for COPD","Diagnostic tool for asthma","Reversal agent for muscle relaxants","Treatment for organophosphate poisoning"], a:1,
+ e:"Methacholine, a direct-acting cholinergic agent, is used as a diagnostic bronchoprovocation test for asthma."},
+{q:"Which drug is used specifically to treat organophosphate toxicity by reactivating cholinesterase?",
+ o:["Neostigmine","Atropine","Pralidoxime","Physostigmine"], a:2,
+ e:"Pralidoxime is a cholinesterase reactivator used for organophosphate toxicity."},
+{q:"On the cholinergic vs anticholinergic comparison chart, an anticholinergic drug would cause which pupil change?",
+ o:["Miosis (constriction)","Mydriasis (dilation)","No change","Nystagmus"], a:1,
+ e:"Anticholinergics block ACh, causing pupils to dilate (mydriasis)."},
+{q:"Sympathetic receptor types include α, β, and which third category?",
+ o:["Nicotinic","Muscarinic","Dopaminergic","Histaminergic"], a:2,
+ e:"Dopaminergic receptors respond to dopamine, a precursor of norepinephrine."},
+{q:"Which of these is a β2 agonist, per the adrenergic agonist/antagonist chart?",
+ o:["Prazosin","Metoprolol","Salbutamol (albuterol)","Yohimbine"], a:2,
+ e:"Salbutamol/albuterol is a β2 agonist; the others are antagonists of α1, β1, and α2 respectively."},
+{q:"What was SRS-A (slow-reacting substance of anaphylaxis) later found to be?",
+ o:["Histamine","The leukotriene C4-D4-E4 series","Prostaglandin D2","Platelet-activating factor"], a:1,
+ e:"SRS-A is now known as the leukotriene C4-D4-E4 series."},
+{q:"NANC inhibitory nerves in the airway cause bronchodilation mediated by which substance(s)?",
+ o:["Substance P","Acetylcholine","VIP or nitric oxide (NO)","Norepinephrine"], a:2,
+ e:"Nonadrenergic, noncholinergic inhibitory nerves relax airway smooth muscle via VIP or NO."},
+{q:"Which nerve fiber type carries signals FROM the periphery TO the spinal cord?",
+ o:["Efferent","Afferent","Somatic motor","Preganglionic sympathetic"], a:1,
+ e:"Afferent fibers carry sensory information from the periphery to the spinal cord."},
+{q:"According to the keyhole theory, which receptor has the largest, deepest 'keyhole'?",
+ o:["α-receptor","β1-receptor","β2-receptor","Muscarinic receptor"], a:2,
+ e:"β2 receptors have the largest, deepest keyhole, accommodating bulky side-chain drugs."},
+{q:"Which isomer of albuterol is responsible for bronchodilation?",
+ o:["(S)-isomer","(R)-isomer","Both equally","Neither — it's the racemic mixture"], a:1,
+ e:"The (R)-isomer is active on β2 receptors and produces bronchodilation; levalbuterol is the pure R-isomer."},
+{q:"Catecholamines are rapidly inactivated by which enzyme, limiting their duration to 1.5–3 hours?",
+ o:["Acetylcholinesterase","MAO-B","COMT","Cytochrome P450"], a:2,
+ e:"COMT (catechol-O-methyltransferase) rapidly inactivates catecholamines."},
+{q:"Why is the inhaled route preferred over oral for catecholamine bronchodilators?",
+ o:["Oral forms don't exist","They are inactivated in the gut and liver","Oral dosing is more expensive","Inhalation avoids COMT entirely"], a:1,
+ e:"Catecholamines are inactivated in the gut/liver, making inhalation the preferred route (though saligenins can be given orally)."},
+{q:"Saligenin agents (like albuterol) achieved oral effectiveness by moving a substitution from which carbon position?",
+ o:["Carbon-2 to carbon-3","Carbon-3 to carbon-4","Carbon-4 to carbon-5","Carbon-5 to carbon-6"], a:2,
+ e:"The substitution moved from the carbon-4 to the carbon-5 site of the chemical chain."},
+{q:"What is albuterol's approximate duration of action?",
+ o:["1–2 hours","5–12 hours","24 hours","48 hours"], a:1,
+ e:"Albuterol: onset 15 min, peak 30–60 min, duration 5–12 hr."},
+{q:"Which of the following is classified as an ultrashort-acting adrenergic agent (<3 hr duration)?",
+ o:["Albuterol","Salmeterol","Racemic epinephrine","Olodaterol"], a:2,
+ e:"Racemic epinephrine has the shortest duration (<3 hours) among the adrenergic bronchodilators listed."},
+{q:"Racemic epinephrine's SVN dose is:",
+ o:["2.25% solution, 0.25–0.5 mL qid","0.5% solution, 2 mL BID","1:1000 solution, 1 mL q4h","5% solution, 0.1 mL qid"], a:0,
+ e:"2.25% solution, 0.25–0.5 mL (5.63–11.25 mg), given four times daily (qid)."},
+{q:"A brand of vilanterol combined with fluticasone and umeclidinium is:",
+ o:["Breo Ellipta","Anoro Ellipta","Trelegy Ellipta","Serevent Diskus"], a:2,
+ e:"Trelegy Ellipta combines vilanterol, fluticasone, and umeclidinium."},
+{q:"Which LABA has the fastest onset (~3 minutes), sometimes prompting a 'fast vs slow' classification alongside 'short vs long'?",
+ o:["Salmeterol","Formoterol","Arformoterol","Olodaterol"], a:1,
+ e:"Formoterol has an onset of about 3 minutes, much faster than salmeterol's 20 minutes."},
+{q:"A key safety rule for LABAs is that they should NOT be used:",
+ o:["With a spacer device","Without a controller medication","In patients over 65","With a nebulizer"], a:1,
+ e:"LABAs should never be used without a controller (e.g., inhaled corticosteroid) medication."},
+{q:"β2-receptor stimulation in the airway produces:",
+ o:["Bronchoconstriction","Relaxation of bronchial smooth muscle","Increased mucus production only","Increased heart rate"], a:1,
+ e:"β2-receptor stimulation relaxes bronchial smooth muscle (bronchodilation)."},
+{q:"α1-receptor activation by agonists like phenylephrine results in:",
+ o:["Bronchodilation","Vasoconstriction of peripheral blood vessels","Increased cardiac contractility","Vasodilation"], a:1,
+ e:"α1-receptor activation causes vasoconstriction of peripheral blood vessels."},
+{q:"For continuous nebulization of albuterol in severe asthma, the typical adult dose rate is:",
+ o:["1–2 mg/hr","2.5–5 mg/hr","10–15 mg/hr","50 mg/hr"], a:2,
+ e:"Generally 10–15 mg/hour for an adult during continuous nebulization."},
+{q:"Which of these is NOT listed as a potential complication of continuous albuterol nebulization?",
+ o:["Cardiac arrhythmias","Hypokalemia","Hyperglycemia","Hyperkalemia"], a:3,
+ e:"Listed complications are cardiac arrhythmias, hypokalemia, and hyperglycemia — not hyperkalemia (high-dose β-agonists can even be used to treat hyperkalemia)."},
+{q:"Subcutaneous epinephrine for acute asthma is dosed at 0.3 mg every 15–20 minutes, not to exceed:",
+ o:["0.5 mg in 1 hour","1 mg in 2 hours","2 mg in 4 hours","0.3 mg total"], a:1,
+ e:"Up to 1 mg total in 2 hours."},
+{q:"Which of the following is one of the proposed explanations for the 'asthma paradox' / β-agonist controversy?",
+ o:["Overuse of inhaled corticosteroids","Accumulation of the (S)-isomer","Excess use of anticholinergics","Underuse of short-acting agents"], a:1,
+ e:"Accumulation of the (S)-isomer is one of several proposed explanations for rising asthma morbidity/mortality despite treatment advances."},
+{q:"Mixing multiple respiratory medications together in a single nebulizer cup is:",
+ o:["Always FDA approved","Rarely done in practice","Not FDA approved for most combinations, despite being common practice","Only allowed with albuterol and saline"], a:2,
+ e:"Though respiratory therapists commonly mix agents, most combinations are not FDA approved."},
+{q:"As part of RT assessment of long-acting β-agonist (LABA) therapy specifically, you should assess:",
+ o:["Only heart rate","Ability to reduce inhaled corticosteroid dose","Blood type","Only peak flow"], a:1,
+ e:"For LABAs specifically: ongoing lung function, rescue drug/nocturnal symptom use, exacerbations, absenteeism, and ability to reduce ICS dose."}
+];
+
+/* ---------------- RENDER: accordion sections ---------------- */
+function renderAccordion(list, containerId){
+  const el = document.getElementById(containerId);
+  el.innerHTML = list.map((s,i)=>`
+    <div class="card" data-idx="${i}">
+      <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+        <h3>${s.t}</h3><span class="arrow">▸</span>
+      </div>
+      <div class="acc-body"><ul class="points">${s.p.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+    </div>`).join('');
+}
+renderAccordion(CH5,'ch5-list');
+renderAccordion(CH6,'ch6-list');
+
+/* ---------------- TABS ---------------- */
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button'); if(!btn) return;
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(btn.dataset.v).classList.add('active');
+  document.body.dataset.tab = btn.dataset.v;
+});
+document.body.dataset.tab = 'ch5';
+
+/* ---------------- FLASHCARDS LOGIC ---------------- */
+let fcDeck = FLASHCARDS.slice();
+let fcIndex = 0;
+let fcFilter = 'ALL';
+
+function buildFilterBar(){
+  const bar = document.getElementById('fc-filter');
+  const cats = ['ALL','CH5','CH6'];
+  bar.innerHTML = cats.map(c=>`<button data-c="${c}" class="${c===fcFilter?'active':''}">${c==='ALL'?'All Cards':c==='CH5'?'Ch.5 Only':'Ch.6 Only'}</button>`).join('');
+  bar.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    fcFilter = b.dataset.c;
+    bar.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    applyFilter();
+  });
+}
+function applyFilter(){
+  fcDeck = fcFilter==='ALL' ? FLASHCARDS.slice() : FLASHCARDS.filter(f=>f.c===fcFilter);
+  fcIndex = 0;
+  showCard();
+}
+function showCard(){
+  const card = fcDeck[fcIndex];
+  document.getElementById('fc-front').textContent = card.q;
+  document.getElementById('fc-back').textContent = card.a;
+  document.getElementById('fc-prog').textContent = `Card ${fcIndex+1} of ${fcDeck.length} (${card.c})`;
+  document.getElementById('flashcard').classList.remove('flipped');
+}
+function flipCard(){ document.getElementById('flashcard').classList.toggle('flipped'); }
+function nextCard(){ fcIndex = (fcIndex+1) % fcDeck.length; showCard(); }
+function prevCard(){ fcIndex = (fcIndex-1+fcDeck.length) % fcDeck.length; showCard(); }
+function shuffleCards(){
+  for(let i=fcDeck.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [fcDeck[i],fcDeck[j]]=[fcDeck[j],fcDeck[i]]; }
+  fcIndex=0; showCard();
+}
+buildFilterBar(); applyFilter();
+
+/* ---------------- QUIZ LOGIC ---------------- */
+let quizOrder = [];
+let quizIndex = 0;
+let quizScore = 0;
+function startQuiz(){
+  quizOrder = QUIZ.map((_,i)=>i);
+  for(let i=quizOrder.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [quizOrder[i],quizOrder[j]]=[quizOrder[j],quizOrder[i]]; }
+  quizIndex = 0; quizScore = 0;
+  renderQuestion();
+}
+function renderQuestion(){
+  const area = document.getElementById('quiz-area');
+  if(quizIndex >= quizOrder.length){
+    area.innerHTML = `<div class="card scorebox">
+      <div>You scored</div>
+      <div class="big">${quizScore} / ${quizOrder.length}</div>
+      <div style="margin:10px 0 20px;color:var(--sub)">${quizScore===quizOrder.length?'Perfect run — nice work!':'Review the missed topics in Ch.5 / Ch.6, then try again.'}</div>
+      <button class="btn" onclick="startQuiz()">Restart Quiz</button>
+    </div>`;
+    return;
+  }
+  const q = QUIZ[quizOrder[quizIndex]];
+  area.innerHTML = `<div class="card">
+    <div class="qprog">Question ${quizIndex+1} of ${quizOrder.length} &nbsp;·&nbsp; Score: ${quizScore}</div>
+    <div class="qtext">${q.q}</div>
+    <div id="opts">${q.o.map((opt,i)=>`<button class="opt" data-i="${i}">${opt}</button>`).join('')}</div>
+    <div id="expl" style="display:none" class="explain"></div>
+    <div style="margin-top:12px; display:none" id="nextwrap"><button class="btn" onclick="quizIndex++; renderQuestion();">Next ▸</button></div>
+  </div>`;
+  document.querySelectorAll('#opts .opt').forEach(btn=>{
+    btn.onclick = ()=>{
+      const chosen = parseInt(btn.dataset.i);
+      document.querySelectorAll('#opts .opt').forEach(b=>b.disabled=true);
+      if(chosen===q.a){ btn.classList.add('correct'); quizScore++; }
+      else{ btn.classList.add('wrong'); document.querySelectorAll('#opts .opt')[q.a].classList.add('correct'); }
+      const ex = document.getElementById('expl'); ex.style.display='block'; ex.textContent = q.e;
+      document.getElementById('nextwrap').style.display='block';
+    };
+  });
+}
+startQuiz();
+</script>
+</body>
+</html>
