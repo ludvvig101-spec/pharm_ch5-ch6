@@ -9,19 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* neon-on-dark base */
   --bg:#0b0714; --card:#150c26; --ink:#f4f0ff; --sub:#b3a3d6; --line:rgba(255,255,255,.08); --chip:#1b1030;
-  /* neon sprinkle palette */
   --mint:#00ffb2; --mint-soft:rgba(0,255,178,.14);
   --straw:#ff2e92; --straw-soft:rgba(255,46,146,.14);
   --lav:#b26bff; --lav-soft:rgba(178,107,255,.16);
   --banana:#f9f002; --banana-soft:rgba(249,240,2,.14);
   --peach:#ff7a1a; --peach-soft:rgba(255,122,26,.14);
   --sky:#20e3ff; --sky-soft:rgba(32,227,255,.14);
-  /* semantic (chapter-scoped) */
   --para:var(--mint); --sym:var(--straw);
   --warn:#ff2e5b; --good:#00ffb2;
-  /* current-tab accent, switched by JS */
   --accent:var(--straw); --accent-soft:var(--straw-soft);
   --font-display:"Baloo 2",ui-rounded,"Nunito",sans-serif;
   --font-body:"Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -109,13 +105,11 @@ ul.points ul{margin-top:4px;}
 .mnemonic::before{content:"✨"; margin-right:6px;}
 .mnemonic b{color:var(--lav); text-shadow:0 0 6px var(--lav);}
 .chsubtitle{color:var(--sub); font-size:13.5px; margin:2px 0 14px; line-height:1.5;}
-/* table-ish compare */
 .cmp{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
 .cmp .col{background:var(--chip); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
 .cmp .col h4{margin:0 0 6px; font-family:var(--font-display); font-size:13.5px;}
 .cmp .col ul{margin:0; padding-left:16px; font-size:13px;}
 .cmp .col li{margin:4px 0;}
-/* flashcards */
 .fc-wrap{display:flex; flex-direction:column; align-items:center; gap:16px;}
 .fc-progress{color:var(--sub); font-size:13px; font-weight:600;}
 .flash{
@@ -150,7 +144,6 @@ select, .filterbar{font-size:13px;}
   cursor:pointer; font-size:12.5px; font-weight:700; transition:all .2s;
 }
 .filterbar button.active{border-color:var(--accent); color:var(--accent); text-shadow:0 0 6px var(--accent); box-shadow:0 0 14px -4px var(--accent);}
-/* quiz */
 .qprog{color:var(--sub); font-size:13px; margin-bottom:6px; font-weight:600;}
 .qtext{font-family:var(--font-display); font-size:16.5px; font-weight:600; margin:6px 0 16px; line-height:1.45;}
 .opt{
@@ -164,7 +157,6 @@ select, .filterbar{font-size:13px;}
 .explain{background:var(--banana-soft); border:1px solid var(--banana); border-radius:14px; padding:11px 14px; font-size:13.5px; margin-top:8px;}
 .scorebox{text-align:center; padding:34px 10px;}
 .scorebox .big{font-family:var(--font-display); font-size:46px; font-weight:800; color:var(--accent); text-shadow:0 0 10px var(--accent), 0 0 30px var(--accent);}
-/* diagrams */
 svg text{font-family:var(--font-body); fill:var(--ink);}
 .dgm{width:100%; height:auto; display:block; margin:12px 0;}
 .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:var(--sub); margin-top:6px;}
@@ -197,104 +189,8 @@ footer{text-align:center; color:var(--sub); font-size:12px; padding:24px 0 10px;
   </section>
 
   <section id="mnem" class="view">
-    <div class="card open"><div class="acc-head"><h3>🧠 The big-picture memory map</h3></div><div class="acc-body">
-      <ul class="points">
-        <li><b>Two ways to name the same drug effect</b> — anatomy word = pharmacology word:
-          <ul>
-            <li><span class="tag para">PARA</span> Parasympatho<b>mimetic</b> = <b>Cholinergic</b> (turns ON the "rest" system — mimics ACh)</li>
-            <li><span class="tag para">PARA</span> Parasympatho<b>lytic</b> = <b>Anticholinergic</b> (turns OFF the "rest" system — blocks ACh)</li>
-            <li><span class="tag sym">SYM</span> Sympatho<b>mimetic</b> = <b>Adrenergic</b> (turns ON "alarm" system — mimics NE/Epi)</li>
-            <li><span class="tag sym">SYM</span> Sympatho<b>lytic</b> = <b>Antiadrenergic</b> (turns OFF "alarm" system)</li>
-          </ul>
-          <div class="mnemonic"><b>Trick:</b> "-mimetic" always MIMICS/turns ON. "-lytic" always LYSES/blocks/turns OFF — no matter which branch.</div>
-        </li>
-      </ul>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>😌 Rest-and-Digest vs 🏃 Fight-or-Flight</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <div class="cmp">
-        <div class="col"><h4 style="color:var(--para)">Parasympathetic</h4><ul>
-          <li>"Rest-and-Digest"</li><li>↓HR, ↓BP, ↓RR</li><li>Bronchoconstriction</li><li>Miosis (pupil constricts)</li><li>↑GI motility</li><li>↑Insulin secretion</li>
-        </ul></div>
-        <div class="col"><h4 style="color:var(--sym)">Sympathetic</h4><ul>
-          <li>"Fight-or-Flight"</li><li>↑HR, ↑BP, ↑RR</li><li>Bronchodilation</li><li>Mydriasis (pupil dilates)</li><li>↓GI motility</li><li>↓Insulin secretion</li>
-        </ul></div>
-      </div>
-      <div class="mnemonic"><b>SLUD</b> = signs of parasympathetic <b>over</b>stimulation: <b>S</b>alivation, <b>L</b>acrimation, <b>U</b>rination, <b>D</b>efecation. Remember: this is what happens when you're too relaxed to hold anything in!</div>
-      <div class="mnemonic"><b>Trick for pupils:</b> "Parasympathetic = Pinpoint" (both start with P) → miosis. Sympathetic = big, wide, scared eyes → mydriasis.</div>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>💊 Cholinergic vs Anticholinergic drug-effect table</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <div class="cmp">
-        <div class="col"><h4 style="color:var(--para)">Cholinergic (mimics ACh)</h4><ul>
-          <li>Ex: physostigmine, donepezil</li><li>Pupils: constrict (pinpoint)</li><li>HR/BP: decreased</li><li>Temp: no change</li><li>GI: active bowel sounds</li><li>Sweating: increased</li><li>Secretions/salivation: increased</li>
-        </ul></div>
-        <div class="col"><h4 style="color:var(--sym)">Anticholinergic (blocks ACh)</h4><ul>
-          <li>Ex: atropine, oxybutynin</li><li>Pupils: dilate</li><li>HR/BP: increased</li><li>Temp: increased</li><li>GI: slowed motility</li><li>Sweating: decreased</li><li>Secretions/salivation: decreased</li>
-        </ul></div>
-      </div>
-      <div class="mnemonic"><b>Classic anticholinergic mnemonic:</b> "Blind as a bat (dilated pupils), mad as a hatter (CNS effects), red as a beet (flushed/hot), hot as a hare (fever, ↑temp), dry as a bone (no secretions), the bowel and bladder lose their tone, and the heart runs alone (tachycardia)."</div>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>🔑 Keyhole Theory (why bigger side chains → more β2-specific)</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <svg class="dgm" viewBox="0 0 600 170" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="20" width="170" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
-        <text x="95" y="15" text-anchor="middle" font-size="12" fill="currentColor">α receptor — small keyhole</text>
-        <circle cx="95" cy="80" r="16" fill="none" stroke="currentColor"/>
-        <rect x="205" y="20" width="170" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
-        <text x="290" y="15" text-anchor="middle" font-size="12" fill="currentColor">β1 receptor — medium keyhole</text>
-        <circle cx="290" cy="80" r="26" fill="none" stroke="currentColor"/>
-        <rect x="400" y="20" width="190" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
-        <text x="495" y="15" text-anchor="middle" font-size="12" fill="currentColor">β2 receptor — large, deep keyhole</text>
-        <circle cx="495" cy="80" r="38" fill="none" stroke="currentColor"/>
-        <text x="495" y="160" text-anchor="middle" font-size="11" fill="currentColor">Big "key" (bulky side chain) only fits here</text>
-      </svg>
-      <ul class="points">
-        <li>Rule: the larger the amine side-chain on the catechol base, the greater the β2-receptor specificity</li>
-        <li>Think drug = key, receptor = lock. α = small keyhole, β1 = medium, β2 = large &amp; deep</li>
-        <li>A bulky side chain is too big to fit α or β1 → slides only into β2 → fewer cardiac/vascular side effects, more bronchodilation</li>
-      </ul>
-      <div class="mnemonic"><b>Trick:</b> "Bigger chain, better (β2) aim." This is also why albuterol/levalbuterol (bulky side chains) are far more β2-selective than epinephrine (small side chain, hits everything).</div>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>⏱️ Duration &amp; naming patterns (drug-suffix shortcuts)</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <ul class="points">
-        <li><b>"-terol"</b> ending = a β2 sympathomimetic bronchodilator (albuterol, levalbuterol, salmeterol, formoterol, arformoterol, olodaterol, indacaterol)</li>
-        <li><b>"-olol"</b> ending = a β-blocker/antiadrenergic (propranolol, atenolol, metoprolol) — the opposite job of the -terols</li>
-        <li><b>Ultrashort (&lt;3 hr):</b> racemic epinephrine</li>
-        <li><b>Short (4–6 hr) = "rescue/reliever":</b> albuterol, levalbuterol</li>
-        <li><b>Long (12–24 hr) = "controller/maintenance":</b> salmeterol, formoterol, arformoterol, olodaterol, vilanterol</li>
-      </ul>
-      <div class="mnemonic"><b>Trick:</b> Short-acting = "SOS" drugs (Save Our Symptoms right now). Long-acting = "scheduled," never for an acute attack.</div>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>🧬 R-isomer vs S-isomer (levalbuterol logic)</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <ul class="points">
-        <li>Albuterol is a racemic (50/50) mix of (R)- and (S)-isomers — nonsuperimposable mirror images</li>
-        <li><b>(R)-isomer</b> = active on airway β2 receptors → produces bronchodilation (levalbuterol = the pure R-isomer, "Xopenex")</li>
-        <li><b>(S)-isomer</b> = little/no bronchodilation, but may increase intracellular calcium, enhance airway hyperresponsiveness &amp; histamine/leukotriene contractile response in vitro, is metabolized more slowly, and accumulates in the lung — possibly worsening outcomes with chronic use</li>
-      </ul>
-      <div class="mnemonic"><b>Trick:</b> "R is Right (helps you breathe); S is Slower and Stays" (metabolized slower, sticks around, and is Suspected in the β-agonist controversy).</div>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>🚭 Why inhalation beats oral for catecholamines</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <ul class="points">
-        <li>Catecholamines are rapidly inactivated by <b>COMT</b> → duration limited to 1.5–3 hr</li>
-        <li>Also inactivated in the gut and liver → unsuitable for oral use (that's why saligenins like albuterol, which moved the substitution from carbon-4 to carbon-5, resist COMT and CAN be given orally, though inhalation is still preferred)</li>
-        <li>Also broken down by heat, light (store in amber bottle/foil), and air</li>
-        <li>Inhalation benefits: rapid onset, smaller doses, fewer systemic side effects, drug goes straight to the target organ, safe &amp; painless</li>
-        <li>Inhalation limitations: takes time, possible embarrassment, patient may be unable to use the device correctly</li>
-      </ul>
-      <div class="mnemonic"><b>Trick:</b> "COMT Chews it up" — remember COMT = the enzyme that limits catecholamine duration, forcing the inhaled route.</div>
-    </div></div>
-
-    <div class="card"><div class="acc-head"><h3>⚠️ Adverse effects &amp; the β-agonist controversy — quick recall list</h3><span class="arrow">▸</span></div><div class="acc-body">
-      <ul class="points">
-        <li><b>Adverse effects (mnemonic "TACT-CPMS"):</b> Tremor, cardiAc effects, tolerance to bronchodilation, loss of bronchoprotection, CNS effects, fall in PaO2, Metabolic disturbances (↑glucose, ↓K+), propellant toxicity/paradoxical bronchospasm, Sensitivity to additives</li>
-        <li><b>Asthma paradox / β-agonist controversy — 8 proposed reasons:</b> lack of steroid use, loss of bronchodilator effect, ↑bronchial hyperreactivity, exposure to triggers w/o symptoms, delayed care-seeking from temporary relief, poor compliance/education, accumulation of the (S)-isomer, environmental/lifestyle changes</li>
-      </ul>
-    </div></div>
-
+    <p class="chsubtitle">Memory tricks, mnemonics &amp; comparison tables pulled from both chapters. Tap a card to expand.</p>
+    <div id="mnem-list"></div>
   </section>
 
   <section id="flash" class="view">
@@ -751,6 +647,76 @@ const CH6 = [
 ]}
 ];
 
+/* ---------------- MEMORY TRICKS DATA ---------------- */
+const MNEM = [
+{t:"🧠 The big-picture memory map", open:true, p:[
+ "<b>Two ways to name the same drug effect</b> — anatomy word = pharmacology word:",
+ "<span class=\"tag para\">PARA</span> Parasympatho<b>mimetic</b> = <b>Cholinergic</b> (turns ON the \"rest\" system — mimics ACh)",
+ "<span class=\"tag para\">PARA</span> Parasympatho<b>lytic</b> = <b>Anticholinergic</b> (turns OFF the \"rest\" system — blocks ACh)",
+ "<span class=\"tag sym\">SYM</span> Sympatho<b>mimetic</b> = <b>Adrenergic</b> (turns ON \"alarm\" system — mimics NE/Epi)",
+ "<span class=\"tag sym\">SYM</span> Sympatho<b>lytic</b> = <b>Antiadrenergic</b> (turns OFF \"alarm\" system)"
+], mnems:["<b>Trick:</b> \"-mimetic\" always MIMICS/turns ON. \"-lytic\" always LYSES/blocks/turns OFF — no matter which branch."]},
+
+{t:"😌 Rest-and-Digest vs 🏃 Fight-or-Flight", cmp:[
+ {h:"Parasympathetic", cls:"para", items:["\"Rest-and-Digest\"","↓HR, ↓BP, ↓RR","Bronchoconstriction","Miosis (pupil constricts)","↑GI motility","↑Insulin secretion"]},
+ {h:"Sympathetic", cls:"sym", items:["\"Fight-or-Flight\"","↑HR, ↑BP, ↑RR","Bronchodilation","Mydriasis (pupil dilates)","↓GI motility","↓Insulin secretion"]}
+], mnems:[
+ "<b>SLUD</b> = signs of parasympathetic <b>over</b>stimulation: <b>S</b>alivation, <b>L</b>acrimation, <b>U</b>rination, <b>D</b>efecation. Remember: this is what happens when you're too relaxed to hold anything in!",
+ "<b>Trick for pupils:</b> \"Parasympathetic = Pinpoint\" (both start with P) → miosis. Sympathetic = big, wide, scared eyes → mydriasis."
+]},
+
+{t:"💊 Cholinergic vs Anticholinergic drug-effect table", cmp:[
+ {h:"Cholinergic (mimics ACh)", cls:"para", items:["Ex: physostigmine, donepezil","Pupils: constrict (pinpoint)","HR/BP: decreased","Temp: no change","GI: active bowel sounds","Sweating: increased","Secretions/salivation: increased"]},
+ {h:"Anticholinergic (blocks ACh)", cls:"sym", items:["Ex: atropine, oxybutynin","Pupils: dilate","HR/BP: increased","Temp: increased","GI: slowed motility","Sweating: decreased","Secretions/salivation: decreased"]}
+], mnems:["<b>Classic anticholinergic mnemonic:</b> \"Blind as a bat (dilated pupils), mad as a hatter (CNS effects), red as a beet (flushed/hot), hot as a hare (fever, ↑temp), dry as a bone (no secretions), the bowel and bladder lose their tone, and the heart runs alone (tachycardia).\""]},
+
+{t:"🔑 Keyhole Theory (why bigger side chains → more β2-specific)",
+ svg:`<svg class="dgm" viewBox="0 0 600 170" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="20" width="170" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
+        <text x="95" y="15" text-anchor="middle" font-size="12" fill="currentColor">α receptor — small keyhole</text>
+        <circle cx="95" cy="80" r="16" fill="none" stroke="currentColor"/>
+        <rect x="205" y="20" width="170" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
+        <text x="290" y="15" text-anchor="middle" font-size="12" fill="currentColor">β1 receptor — medium keyhole</text>
+        <circle cx="290" cy="80" r="26" fill="none" stroke="currentColor"/>
+        <rect x="400" y="20" width="190" height="120" rx="10" fill="none" stroke="currentColor" opacity=".35"/>
+        <text x="495" y="15" text-anchor="middle" font-size="12" fill="currentColor">β2 receptor — large, deep keyhole</text>
+        <circle cx="495" cy="80" r="38" fill="none" stroke="currentColor"/>
+        <text x="495" y="160" text-anchor="middle" font-size="11" fill="currentColor">Big "key" (bulky side chain) only fits here</text>
+      </svg>`,
+ p:[
+ "Rule: the larger the amine side-chain on the catechol base, the greater the β2-receptor specificity",
+ "Think drug = key, receptor = lock. α = small keyhole, β1 = medium, β2 = large &amp; deep",
+ "A bulky side chain is too big to fit α or β1 → slides only into β2 → fewer cardiac/vascular side effects, more bronchodilation"
+], mnems:["<b>Trick:</b> \"Bigger chain, better (β2) aim.\" This is also why albuterol/levalbuterol (bulky side chains) are far more β2-selective than epinephrine (small side chain, hits everything)."]},
+
+{t:"⏱️ Duration &amp; naming patterns (drug-suffix shortcuts)", p:[
+ "<b>\"-terol\"</b> ending = a β2 sympathomimetic bronchodilator (albuterol, levalbuterol, salmeterol, formoterol, arformoterol, olodaterol, indacaterol)",
+ "<b>\"-olol\"</b> ending = a β-blocker/antiadrenergic (propranolol, atenolol, metoprolol) — the opposite job of the -terols",
+ "<b>Ultrashort (&lt;3 hr):</b> racemic epinephrine",
+ "<b>Short (4–6 hr) = \"rescue/reliever\":</b> albuterol, levalbuterol",
+ "<b>Long (12–24 hr) = \"controller/maintenance\":</b> salmeterol, formoterol, arformoterol, olodaterol, vilanterol"
+], mnems:["<b>Trick:</b> Short-acting = \"SOS\" drugs (Save Our Symptoms right now). Long-acting = \"scheduled,\" never for an acute attack."]},
+
+{t:"🧬 R-isomer vs S-isomer (levalbuterol logic)", p:[
+ "Albuterol is a racemic (50/50) mix of (R)- and (S)-isomers — nonsuperimposable mirror images",
+ "<b>(R)-isomer</b> = active on airway β2 receptors → produces bronchodilation (levalbuterol = the pure R-isomer, \"Xopenex\")",
+ "<b>(S)-isomer</b> = little/no bronchodilation, but may increase intracellular calcium, enhance airway hyperresponsiveness &amp; histamine/leukotriene contractile response in vitro, is metabolized more slowly, and accumulates in the lung — possibly worsening outcomes with chronic use"
+], mnems:["<b>Trick:</b> \"R is Right (helps you breathe); S is Slower and Stays\" (metabolized slower, sticks around, and is Suspected in the β-agonist controversy)."]},
+
+{t:"🚭 Why inhalation beats oral for catecholamines", p:[
+ "Catecholamines are rapidly inactivated by <b>COMT</b> → duration limited to 1.5–3 hr",
+ "Also inactivated in the gut and liver → unsuitable for oral use (that's why saligenins like albuterol, which moved the substitution from carbon-4 to carbon-5, resist COMT and CAN be given orally, though inhalation is still preferred)",
+ "Also broken down by heat, light (store in amber bottle/foil), and air",
+ "Inhalation benefits: rapid onset, smaller doses, fewer systemic side effects, drug goes straight to the target organ, safe &amp; painless",
+ "Inhalation limitations: takes time, possible embarrassment, patient may be unable to use the device correctly"
+], mnems:["<b>Trick:</b> \"COMT Chews it up\" — remember COMT = the enzyme that limits catecholamine duration, forcing the inhaled route."]},
+
+{t:"⚠️ Adverse effects &amp; the β-agonist controversy — quick recall list", p:[
+ "<b>Adverse effects (mnemonic \"TACT-CPMS\"):</b> Tremor, cardiAc effects, tolerance to bronchodilation, loss of bronchoprotection, CNS effects, fall in PaO2, Metabolic disturbances (↑glucose, ↓K+), propellant toxicity/paradoxical bronchospasm, Sensitivity to additives",
+ "<b>Asthma paradox / β-agonist controversy — 8 proposed reasons:</b> lack of steroid use, loss of bronchodilator effect, ↑bronchial hyperreactivity, exposure to triggers w/o symptoms, delayed care-seeking from temporary relief, poor compliance/education, accumulation of the (S)-isomer, environmental/lifestyle changes"
+]}
+];
+
 /* ---------------- FLASHCARDS ---------------- */
 const FLASHCARDS = [
 {c:"CH5",q:"What are the two main divisions of the CNS?",a:"Brain and spinal cord."},
@@ -944,6 +910,28 @@ function renderAccordion(list, containerId){
 }
 renderAccordion(CH5,'ch5-list');
 renderAccordion(CH6,'ch6-list');
+
+/* ---------------- RENDER: memory tricks (accordion, with compare grids / svg / mnemonic boxes) ---------------- */
+function renderMnem(list, containerId){
+  const el = document.getElementById(containerId);
+  el.innerHTML = list.map((s,i)=>{
+    let body = '';
+    if(s.svg) body += s.svg;
+    if(s.p) body += `<ul class="points">${s.p.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+    if(s.cmp) body += `<div class="cmp">${s.cmp.map(col=>`
+        <div class="col"><h4 style="color:var(--${col.cls})">${col.h}</h4><ul>${col.items.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+      `).join('')}</div>`;
+    if(s.mnems) body += s.mnems.map(m=>`<div class="mnemonic">${m}</div>`).join('');
+    return `
+    <div class="card${s.open?' open':''}" data-idx="${i}">
+      <div class="acc-head" onclick="this.parentElement.classList.toggle('open')">
+        <h3>${s.t}</h3><span class="arrow">▸</span>
+      </div>
+      <div class="acc-body">${body}</div>
+    </div>`;
+  }).join('');
+}
+renderMnem(MNEM,'mnem-list');
 
 /* ---------------- TABS ---------------- */
 document.getElementById('tabs').addEventListener('click', e=>{
